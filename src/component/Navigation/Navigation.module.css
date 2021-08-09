@@ -1,0 +1,31 @@
+.base {
+  color: black;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.container {
+  padding-left: 20px;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    106deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(29, 34, 253, 0.3200630594034489) 37%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.list {
+  display: flex;
+  list-style: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.item:last-child {
+  margin-left: 20px;
+}
