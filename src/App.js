@@ -1,5 +1,5 @@
-import { Route, Switch } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { Route, Switch,  Redirect } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
 import Navigation from './component/Navigation';
 
 const Home = lazy(() =>
@@ -25,6 +25,7 @@ export default function App() {
           <Route path="/movies/:movieId" component={MovieDetail} />
           <Route path="/movies" component={Movies} />
           <Route component={NotFound} />
+           <Redirect to="/" />
         </Switch>
       </Suspense>
     </>
