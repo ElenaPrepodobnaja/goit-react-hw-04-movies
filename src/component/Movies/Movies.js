@@ -10,8 +10,8 @@ export default function Movies() {
   const history = useHistory();
   const searchHistory = new URLSearchParams(location.search).get('searchBy');
 
-  const [query, setQuery] = useState(searchHistory);
-  const [movies, setMovies] = useState([ ]);
+  const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
@@ -21,11 +21,12 @@ export default function Movies() {
       if (data.results.length > 0) {
         setMovies(data.results);
         setStatus('resolved');
+        setQuery(searchHistory);
         return;
       }
       setStatus('rejected');
     });
-  }, [query]);
+  }, [query, searchHistory]);
 
   const handleFormSubmit = query => {
     setQuery(query);
