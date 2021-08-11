@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import * as Api from '../../services/Api';
 import MoviesList from '../MoviesList';
 import SearchForm from '../SearchForm';
 
 export default function Movies() {
-  const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState(null);
+  
+  const location = useLocation();
+  const history = useHistory();
+  const searchHistory = new URLSearchParams(location.search).get('searchBy');
+
+  const [query, setQuery] = useState(searchHistory);
+  const [movies, setMovies] = useState([ ]);
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
@@ -23,6 +29,10 @@ export default function Movies() {
 
   const handleFormSubmit = query => {
     setQuery(query);
+    history.push({
+        ...location,
+        search: `searchBy=${query}`,
+      });
   };
 
   if (status === 'pending') {

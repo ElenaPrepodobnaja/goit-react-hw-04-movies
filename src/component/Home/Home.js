@@ -3,7 +3,7 @@ import * as Api from '../../services/Api';
 import MoviesList from '../MoviesList';
 
 export default function Home() {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([ ]);
 
   useEffect(() => {
     Api.FetchInTrendMovies().then(data => {
